@@ -1,0 +1,19 @@
+{
+  "name": "pharma-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "frontend:dev": "npm run dev -w frontend",
+    "frontend:build": "npm run build -w frontend",
+    "frontend:start": "npm run start -w frontend",
+    "frontend:lint": "npm run lint -w frontend",
+    "dev": "npm run frontend:dev",
+    "build": "npm run frontend:build",
+    "start": "npm run frontend:start",
+    "lint": "npm run frontend:lint",
+    "postinstall": "npm install --prefix frontend"
+  }
+}
