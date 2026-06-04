@@ -1,86 +1,109 @@
-import React from "react";
-import Link from "next/link";
-import { Beaker, Mail, Phone, MapPin, Linkedin, Twitter, ExternalLink } from "lucide-react";
+import React from 'react';
+import Link from 'next/link';
+import { Shield, Mail, Globe, Linkedin, Twitter, ExternalLink, Beaker } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    Science: [
+      { label: 'R&D Pipeline', href: '/pipeline' },
+      { label: 'Clinical Trials', href: '#' },
+      { label: 'Biotechnology', href: '#' },
+      { label: 'Manufacturing', href: '#' },
+    ],
+    Products: [
+      { label: 'Small Molecules', href: '/products' },
+      { label: 'Biosimilars', href: '/products' },
+      { label: 'Synthetics', href: '/products' },
+      { label: 'Distribution', href: '#' },
+    ],
+    Company: [
+      { label: 'About Mayogex', href: '/about' },
+      { label: 'Leadership', href: '/about#leadership' },
+      { label: 'Careers', href: '#' },
+      { label: 'Investors', href: '#' },
+    ],
+    Compliance: [
+      { label: 'Regulatory Affairs', href: '/partnerships' },
+      { label: 'Quality Control', href: '#' },
+      { label: 'Ethics & Integrity', href: '#' },
+      { label: 'Global Access', href: '#' },
+    ],
+  };
+
   return (
-    <footer className="bg-carbon-950 pt-20 pb-10 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <Beaker className="w-8 h-8 text-accent-teal" />
+    <footer className="bg-slate-950 border-t border-slate-800 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
+          {/* Brand Column */}
+          <div className="col-span-2 lg:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                <Beaker className="w-5 h-5 text-white" />
+              </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                MAYOGEX<span className="text-accent-teal">PHARMA</span>
+                MAYOGEX<span className="text-teal-500">.</span>
               </span>
             </Link>
-            <p className="text-carbon-400 text-sm leading-relaxed">
-              Pioneering the next generation of precision therapeutics through innovative molecular engineering and patient-centric formulation science.
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              Empowering healthcare through clinical precision and innovative pharmaceutical redistribution.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="p-2 bg-carbon-900 rounded-lg hover:text-accent-teal transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <Link href="#" className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 hover:text-teal-500 hover:border-teal-500/30 transition-all">
+                <Linkedin className="w-4 h-4" />
               </Link>
-              <Link href="#" className="p-2 bg-carbon-900 rounded-lg hover:text-accent-teal transition-colors">
-                <Twitter className="w-5 h-5" />
+              <Link href="#" className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 hover:text-teal-500 hover:border-teal-500/30 transition-all">
+                <Twitter className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 hover:text-teal-500 hover:border-teal-500/30 transition-all">
+                <Mail className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-white font-semibold mb-6">Pipeline</h4>
-            <ul className="space-y-4 text-sm text-carbon-400">
-              <li><Link href="/pipeline" className="hover:text-accent-teal transition-colors">Oncology Research</Link></li>
-              <li><Link href="/pipeline" className="hover:text-accent-teal transition-colors">Neuroscience Hub</Link></li>
-              <li><Link href="/pipeline" className="hover:text-accent-teal transition-colors">Immunology Studies</Link></li>
-              <li><Link href="/pipeline" className="hover:text-accent-teal transition-colors">Clinical Trials Overview</Link></li>
-            </ul>
-          </div>
+          {/* Links Columns */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">{title}</h4>
+              <ul className="space-y-4">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <Link 
+                      href={link.href} 
+                      className="text-slate-400 hover:text-teal-400 text-sm transition-colors flex items-center gap-1 group"
+                    >
+                      {link.label}
+                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-          <div>
-            <h4 className="text-white font-semibold mb-6">Corporate</h4>
-            <ul className="space-y-4 text-sm text-carbon-400">
-              <li><Link href="/about" className="hover:text-accent-teal transition-colors">Leadership Team</Link></li>
-              <li><Link href="/partnerships" className="hover:text-accent-teal transition-colors">Strategic Licensing</Link></li>
-              <li><Link href="/about" className="hover:text-accent-teal transition-colors">Compliance & Quality</Link></li>
-              <li><Link href="/contact" className="hover:text-accent-teal transition-colors">Global Offices</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-6">Contact</h4>
-            <ul className="space-y-4 text-sm text-carbon-400">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-accent-teal shrink-0" />
-                <span>One Innovation Way, Suite 500<br />Cambridge, MA 02142, USA</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-accent-teal shrink-0" />
-                <span>+1 (617) 555-0123</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-accent-teal shrink-0" />
-                <span>contact@mayogex.com</span>
-              </li>
-            </ul>
+        {/* Legal/Medical Disclaimer Banner */}
+        <div className="glass-panel p-6 rounded-2xl mb-12 border-slate-800/50">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+            <div className="p-2 bg-amber-500/10 rounded-full">
+              <Shield className="w-5 h-5 text-amber-500" />
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed uppercase tracking-wider font-medium">
+              <span className="text-slate-300 font-bold">REGULATORY DISCLAIMER:</span> ALL DATA PROVIDED ON THIS PLATFORM IS FOR INFORMATIONAL AND INVESTOR PURPOSES ONLY. MAYOGEX PHARMACEUTICALS OPERATES UNDER GLOBAL PHARMACEUTICAL REGULATORY PRACTICES. NOTHING ON THIS SITE SHOULD BE CONSTRUED AS MEDICAL ADVICE OR A RECOMMENDATION FOR ANY SPECIFIC TREATMENT. CONSULT WITH QUALIFIED HEALTHCARE PROFESSIONALS FOR CLINICAL GUIDANCE.
+            </p>
           </div>
         </div>
 
-        <div className="pt-10 border-t border-white/5 space-y-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] uppercase tracking-widest text-carbon-500 font-medium">
-            <div className="flex flex-wrap gap-6">
-              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
-              <Link href="#" className="hover:text-white transition-colors">Cookie Settings</Link>
-              <Link href="#" className="hover:text-white transition-colors">Sitemap</Link>
-            </div>
-            <p>© 2026 MAYOGEX PHARMACEUTICALS INC. ALL RIGHTS RESERVED.</p>
-          </div>
-
-          <div className="bg-carbon-900/50 p-4 rounded-lg border border-white/5">
-            <p className="text-[11px] text-carbon-500 leading-relaxed italic">
-              MEDICAL DISCLAIMER: This website is for informational purposes only and does not provide medical advice, diagnosis, or treatment. The information provided here is not intended to be a substitute for professional medical advice from a qualified healthcare provider. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-            </p>
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-900 gap-4">
+          <p className="text-slate-500 text-xs">
+            © {currentYear} Mayogex Pharmaceuticals AG. All rights reserved.
+          </p>
+          <div className="flex gap-8">
+            <Link href="#" className="text-slate-500 hover:text-white text-xs transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-slate-500 hover:text-white text-xs transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-slate-500 hover:text-white text-xs transition-colors">Cookie Settings</Link>
           </div>
         </div>
       </div>

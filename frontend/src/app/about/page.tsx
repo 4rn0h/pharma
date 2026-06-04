@@ -1,95 +1,175 @@
-import { ShieldCheck, Target, Users, Award, Microscope, Heart } from "lucide-react";
+import React from 'react';
+import Image from 'next/image';
+import { Target, Zap, ShieldCheck, Users, Globe2, Award, ArrowRight } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const CORE_VALUES = [
+  {
+    icon: Target,
+    title: "Precision Engineering",
+    description: "We apply rigorous clinical standards to every facet of our redistribution and manufacturing processes.",
+    color: "text-teal-500",
+    bg: "bg-teal-500/10"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Unwavering Integrity",
+    description: "Operating with absolute transparency and compliance in the global pharmaceutical ecosystem.",
+    color: "text-emerald-500",
+    bg: "bg-emerald-500/10"
+  },
+  {
+    icon: Zap,
+    title: "Bio-Electric Innovation",
+    description: "Leveraging cutting-edge molecular synthetics to drive the next generation of patient care.",
+    color: "text-blue-500",
+    bg: "bg-blue-500/10"
+  }
+];
+
+const LEADERSHIP = [
+  {
+    name: "Dr. Elena Vance",
+    role: "Chief Executive Officer",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+    bio: "Former Head of Oncology at Global Pharma, Dr. Vance brings 20 years of clinical research experience."
+  },
+  {
+    name: "Marcus Thorne",
+    role: "Chief Operations Officer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
+    bio: "Expert in cold-chain logistics and pharmaceutical supply chain optimization."
+  },
+  {
+    name: "Dr. Sarah Chen",
+    role: "Chief Scientific Officer",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
+    bio: "Pioneer in biosimilar synthetic development with 15+ patents in molecular biology."
+  },
+  {
+    name: "Julian Ross",
+    role: "Head of Compliance",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
+    bio: "Specialist in international regulatory law and pharmaceutical quality assurance."
+  }
+];
 
 export default function AboutPage() {
   return (
-    <div className="pt-32">
-      {/* Header */}
-      <section className="max-w-7xl mx-auto px-6 mb-24">
-        <h2 className="text-accent-teal font-bold uppercase tracking-widest text-sm mb-4">Our Story</h2>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">Pioneering Precision. <br />Driven by Purpose.</h1>
-        <p className="text-xl text-carbon-400 max-w-3xl leading-relaxed">
-          Founded in 2018, Mayogex Pharmaceuticals was born from a singular vision: to bridge the gap between breakthrough molecular science and patient access. We combine deep technical expertise with an unwavering commitment to quality.
-        </p>
+    <main className="min-h-screen bg-slate-950">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950" />
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-tight">
+              Engineering the <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Future of Life Sciences</span>.
+            </h1>
+            <p className="text-xl text-slate-400 leading-relaxed mb-10">
+              Mayogex Pharmaceuticals is a clinical-stage biotech powerhouse dedicated to redefining the global redistribution of critical therapeutics through precision engineering and ethical innovation.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* Vision/Mission/Values */}
-      <section className="bg-carbon-900/50 py-24 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              { icon: <Target className="w-8 h-8 text-accent-teal" />, title: "Our Vision", desc: "To become the global leader in precision molecular design, setting new standards for therapeutic efficacy and safety." },
-              { icon: <Heart className="w-8 h-8 text-accent-emerald" />, title: "Our Mission", desc: "To accelerate the delivery of life-changing medicines by leveraging state-of-the-art computational biology." },
-              { icon: <ShieldCheck className="w-8 h-8 text-blue-500" />, title: "Core Values", desc: "Integrity, innovation, and inclusivity drive every decision we make, from lab bench to patient bedside." }
-            ].map((item, i) => (
-              <div key={i} className="space-y-6">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-                <p className="text-carbon-400 leading-relaxed">{item.desc}</p>
+      {/* Core Values Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-dots-pattern opacity-10" />
+        <div className="max-w-7xl mx-auto px-4 relative">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Core Values</h2>
+            <div className="h-1 w-20 bg-teal-500 mx-auto rounded-full" />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {CORE_VALUES.map((value, index) => (
+              <div key={index} className="glass-panel p-8 rounded-3xl relative group overflow-hidden">
+                <div className={`absolute top-0 right-0 w-32 h-32 ${value.bg} blur-3xl opacity-20 group-hover:opacity-40 transition-opacity`} />
+                <value.icon className={`w-12 h-12 ${value.color} mb-6`} />
+                <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
+                <p className="text-slate-400 leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Narrative Section */}
+      <section className="py-24 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-teal-500/20 blur-2xl rounded-full" />
+              <div className="relative glass-panel p-4 rounded-3xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1579154234431-da6781bd7ad3?auto=format&fit=crop&q=80&w=800" 
+                  alt="Laboratory" 
+                  className="rounded-2xl w-full h-[500px] object-cover"
+                />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8">Bridging the Gap in Global Healthcare</h2>
+              <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
+                <p>
+                  Founded in 2018, Mayogex began with a simple mission: to ensure that life-saving medications reach the patients who need them most, regardless of geographical barriers or supply chain inefficiencies.
+                </p>
+                <p>
+                  Today, we operate at the intersection of biotechnology and logistics, utilizing proprietary AI-driven predictive modeling to optimize the movement of surplus oncology and neurology therapeutics across six continents.
+                </p>
+                <p>
+                  Our state-of-the-art synthetic manufacturing facilities allow us to complement our redistribution efforts with high-quality biosimilars, driving down costs without ever compromising on clinical efficacy.
+                </p>
+              </div>
+              <button className="mt-10 flex items-center gap-2 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-teal-900/20 group">
+                Download Impact Report
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Leadership Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-accent-teal font-bold uppercase tracking-widest text-sm mb-4">Leadership</h2>
-          <h3 className="text-4xl font-bold text-white">The Minds Behind Mayogex</h3>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            { name: "Dr. Elena Vance", role: "Chief Executive Officer", bio: "Former Head of R&D at Novartis with 20+ years in oncology." },
-            { name: "Marcus Chen", role: "Chief Scientific Officer", bio: "Pioneer in computational protein folding and molecular docking." },
-            { name: "Dr. Sarah Miller", role: "Head of Clinical Ops", bio: "Led 50+ successful Phase I-III global clinical trials." },
-            { name: "David Sterling", role: "Chief Strategy Officer", bio: "Specialist in biotech licensing and strategic global partnerships." }
-          ].map((leader, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-3xl glass-morphism border-white/5 hover:border-accent-teal/30 transition-all">
-              <div className="aspect-[4/5] bg-carbon-800 relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-t from-carbon-950 via-transparent to-transparent opacity-60" />
-                 {/* Placeholder for actual image */}
-                 <div className="absolute inset-0 flex items-center justify-center text-carbon-700">
-                   <Users className="w-20 h-20" />
-                 </div>
-              </div>
-              <div className="p-6">
-                <h4 className="text-lg font-bold text-white mb-1">{leader.name}</h4>
-                <div className="text-accent-teal text-xs font-bold uppercase tracking-widest mb-4">{leader.role}</div>
-                <p className="text-carbon-500 text-sm italic line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
-                  {leader.bio}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Compliance & Quality */}
-      <section className="py-24 bg-accent-teal/5 relative">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-teal/10 border border-accent-teal/20 text-accent-teal text-xs font-bold rounded-full mb-8">
-             <Award className="w-4 h-4" /> Global Standards
+      <section id="leadership" className="py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Visionary Leadership</h2>
+            <p className="text-slate-400">The minds behind the medical revolution.</p>
           </div>
-          <h2 className="text-4xl font-bold text-white mb-12">Uncompromising Quality & Compliance</h2>
           
-          <div className="flex flex-wrap justify-center gap-12">
-            {[
-              { label: "GMP Certified", sub: "Manufacturing Excellence" },
-              { icon: <ShieldCheck />, label: "FDA Compliant", sub: "Regulatory Rigor" },
-              { label: "ISO 9001:2015", sub: "Quality Management" },
-              { label: "GDPR Ready", sub: "Data Privacy" }
-            ].map((badge, i) => (
-              <div key={i} className="text-center">
-                <div className="text-2xl font-black text-white/20 mb-2 uppercase tracking-tighter">{badge.label}</div>
-                <div className="text-[10px] text-accent-teal font-bold uppercase tracking-widest">{badge.sub}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {LEADERSHIP.map((leader, index) => (
+              <div key={index} className="glass-panel group rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500">
+                <div className="h-64 relative overflow-hidden">
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">{leader.name}</h3>
+                  <p className="text-teal-500 text-xs font-bold uppercase tracking-widest mb-4">{leader.role}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {leader.bio}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   );
 }

@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Beaker, ArrowRight } from "lucide-react";
+import { Menu, X, Activity, ArrowRight, Truck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "About Us", href: "/about" },
-  { name: "R&D / Pipeline", href: "/pipeline" },
-  { name: "Therapeutic Areas", href: "/products" },
+  { name: "Inventory", href: "/pipeline" },
+  { name: "Products", href: "/products" },
   { name: "Partnerships", href: "/partnerships" },
 ];
 
@@ -36,11 +36,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative">
-            <Beaker className="w-8 h-8 text-accent-teal group-hover:rotate-12 transition-transform duration-300" />
+            <Activity className="w-8 h-8 text-accent-teal group-hover:rotate-12 transition-transform duration-300" />
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">
-            MAYOGEX<span className="text-accent-teal">PHARMA</span>
+          <span className="text-xl font-bold tracking-tight text-white uppercase">
+            Mayogex<span className="text-accent-teal">Pharma</span>
           </span>
         </Link>
 

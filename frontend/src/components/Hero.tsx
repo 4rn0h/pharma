@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, ChevronRight, Activity, Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, Activity, Zap, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -32,23 +32,23 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-teal"></span>
             </span>
-            Accelerating Therapeutic Innovation
+            Kenya's Premier Pharmaceutical Supply Chain
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-            Engineering the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-teal to-accent-emerald">Future of Medicine</span>
+            Kenya's Most Reliable <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-teal to-accent-emerald">Medical Supply Chain</span>
           </h1>
 
           <p className="text-xl text-carbon-400 leading-relaxed max-w-xl">
-            Mayogex Pharmaceuticals leverages advanced computational biology and precision molecular design to address the world&apos;s most challenging therapeutic frontiers.
+            Mayogex Pharma is streamlining the distribution of essential medicines across Kenya, ensuring every clinic and hospital has life-saving drugs when they need them.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="/pipeline" 
+              href="/products" 
               className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-carbon-950 font-bold rounded-full hover:bg-accent-teal hover:text-white transition-all group"
             >
-              Explore Pipeline
+              Order Medicines
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
@@ -62,16 +62,16 @@ export default function Hero() {
 
           <div className="pt-8 grid grid-cols-3 gap-8 border-t border-white/5">
             <div>
-              <div className="text-2xl font-bold text-white">14+</div>
-              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">Active Molecules</div>
+              <div className="text-2xl font-bold text-white">47</div>
+              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">Counties Covered</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">3</div>
-              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">Phase II Studies</div>
+              <div className="text-2xl font-bold text-white">1,200+</div>
+              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">Clinics Served</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">200+</div>
-              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">Scientists</div>
+              <div className="text-2xl font-bold text-white">100%</div>
+              <div className="text-xs text-carbon-500 uppercase tracking-wider font-semibold">PPB Compliant</div>
             </div>
           </div>
         </motion.div>
@@ -82,49 +82,35 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden lg:block"
         >
-          <div className="relative z-10 glass-morphism p-8 rounded-3xl border-white/10 overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-teal to-accent-emerald" />
+          <div className="relative z-10 glass-morphism p-2 rounded-[32px] border-white/10 overflow-hidden group">
+            <div className="aspect-[4/5] rounded-[24px] bg-[url('https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700" />
             
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-accent-teal/20 flex items-center justify-center">
-                  <Activity className="w-5 h-5 text-accent-teal" />
-                </div>
-                <div>
-                  <div className="text-white font-bold">Real-time Analysis</div>
-                  <div className="text-xs text-carbon-500 italic">Molecular Docking Simulation</div>
-                </div>
-              </div>
-              <div className="text-accent-emerald text-sm font-mono">98.4% Accuracy</div>
-            </div>
-
-            <div className="space-y-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="space-y-2">
-                  <div className="flex justify-between text-xs font-semibold uppercase tracking-wider text-carbon-400">
-                    <span>Protein Interaction {i}</span>
-                    <span className="text-white">{85 + i * 4}%</span>
+            <div className="absolute inset-x-4 bottom-4 glass-morphism p-6 rounded-2xl border-white/10 translate-y-2 group-hover:translate-y-0 transition-transform">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-accent-teal/20 flex items-center justify-center">
+                    <Truck className="w-5 h-5 text-accent-teal" />
                   </div>
-                  <div className="h-1.5 w-full bg-carbon-800 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: `${85 + i * 4}%` }}
-                      transition={{ duration: 1.5, delay: 0.5 + i * 0.2 }}
-                      className="h-full bg-gradient-to-r from-accent-teal to-accent-emerald"
-                    />
+                  <div>
+                    <div className="text-white font-bold">Smart Logistics</div>
+                    <div className="text-xs text-carbon-500">Real-time GPS Tracking</div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-6">
-              <div className="flex items-center gap-2 text-carbon-400 text-sm">
-                <Zap className="w-4 h-4 text-accent-teal" />
-                Next-Gen AI
+                <div className="text-accent-emerald text-sm font-mono">LIVE</div>
               </div>
-              <div className="flex items-center gap-2 text-carbon-400 text-sm">
-                <ShieldCheck className="w-4 h-4 text-accent-emerald" />
-                FDA Compliant
+              <div className="space-y-3">
+                <div className="h-1 w-full bg-carbon-800 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: "75%" }}
+                    transition={{ duration: 2, delay: 1 }}
+                    className="h-full bg-accent-teal"
+                  />
+                </div>
+                <div className="flex justify-between text-[10px] text-carbon-500 font-bold uppercase tracking-wider">
+                  <span>In-Transit: 42 Trucks</span>
+                  <span>On-Time: 98%</span>
+                </div>
               </div>
             </div>
           </div>

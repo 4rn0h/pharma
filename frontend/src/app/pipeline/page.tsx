@@ -1,70 +1,89 @@
 import PipelineTracker from "@/components/PipelineTracker";
-import { Info, Download, ArrowUpRight } from "lucide-react";
+import { Info, Download, ArrowUpRight, Microscope, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function PipelinePage() {
   return (
-    <div className="pt-32">
+    <main className="min-h-screen bg-slate-950">
+      <Navbar />
+      
       {/* Header */}
-      <section className="max-w-7xl mx-auto px-6 mb-16">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <div className="max-w-3xl">
-            <h2 className="text-accent-teal font-bold uppercase tracking-widest text-sm mb-4">Scientific Core</h2>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">Clinical Pipeline</h1>
-            <p className="text-xl text-carbon-400 leading-relaxed">
-              Explore our diverse portfolio of investigative therapeutics. Our pipeline represents our commitment to solving complex biological challenges in areas with significant unmet medical need.
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <button className="flex items-center gap-2 px-6 py-3 bg-carbon-900 border border-white/10 text-white text-sm font-bold rounded-full hover:bg-carbon-800 transition-all">
-              <Download className="w-4 h-4" /> Pipeline Factsheet
-            </button>
+      <section className="pt-32 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
+            <div className="max-w-3xl">
+              <h2 className="text-teal-500 font-bold uppercase tracking-widest text-sm mb-4 flex items-center gap-2">
+                <Microscope className="w-4 h-4" />
+                Clinical Development Pipeline
+              </h2>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+                Advancing <span className="text-emerald-500">Breakthroughs</span>.
+              </h1>
+              <p className="text-xl text-slate-400 leading-relaxed">
+                Explore the Mayogex R&D portfolio. We are currently advancing multiple clinical-stage assets across Oncology, Neurology, and Immunology, utilizing our proprietary synthetic manufacturing platform.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button className="flex items-center gap-2 px-6 py-4 bg-slate-900 border border-slate-700 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition-all group">
+                <Download className="w-4 h-4 group-hover:text-teal-500" /> 
+                Download Pipeline PDF
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Pipeline Tracker */}
-      <section className="max-w-7xl mx-auto px-6 mb-24">
-        <PipelineTracker />
+      <section className="pb-24 relative">
+        <div className="absolute inset-0 bg-dots-pattern opacity-5" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <PipelineTracker />
+        </div>
       </section>
 
-      {/* R&D Approach */}
-      <section className="py-24 bg-carbon-900/50 border-y border-white/5">
+      {/* R&D Capabilities */}
+      <section className="py-24 bg-slate-900/30 border-y border-slate-800/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-white leading-tight">Our Precision Discovery <br /><span className="text-accent-teal">Engine: GexAI™</span></h2>
-              <p className="text-carbon-400 leading-relaxed">
-                At the heart of our pipeline is GexAI™, a proprietary computational platform that integrates structural biology, machine learning, and high-throughput screening. This enables us to:
+              <h2 className="text-3xl font-bold text-white leading-tight">
+                Accelerated <span className="text-teal-500">Tech-Transfer</span> & Manufacturing
+              </h2>
+              <p className="text-slate-400 leading-relaxed text-lg">
+                Our R&D success is powered by an integrated manufacturing ecosystem that allows for rapid translation from bench to bedside.
               </p>
-              <ul className="space-y-4">
+              <div className="space-y-6">
                 {[
-                  "Predict binding affinities with sub-nanomolar accuracy",
-                  "Identify off-target interactions in silico before lead optimization",
-                  "Optimize pharmacokinetics (PK) profiles through generative chemistry",
-                  "Select patient populations most likely to respond to therapy"
+                  { title: "Modular Synthesis", desc: "Proprietary protocols for rapid molecule prototyping.", icon: Zap },
+                  { title: "Clinical Integrity", desc: "Full GxP compliance across all development phases.", icon: ShieldCheck },
+                  { title: "Global Access", desc: "Strategically located hubs for clinical trial logistics.", icon: ArrowUpRight }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-carbon-300">
-                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-teal shrink-0" />
-                    {item}
-                  </li>
+                  <div key={i} className="flex gap-4">
+                    <div className="p-2 bg-slate-900 rounded-lg h-fit border border-slate-800">
+                      <item.icon className="w-5 h-5 text-teal-500" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold">{item.title}</h4>
+                      <p className="text-slate-400 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
                 ))}
-              </ul>
-              <Link href="/about" className="inline-flex items-center gap-2 text-accent-teal font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all">
-                Learn about our Science <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              </div>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
               {[
-                { label: "Target Validation", val: "100%" },
-                { label: "Hit-to-Lead Ratio", val: "1:15" },
-                { label: "Optimization Cycle", val: "12w" },
-                { label: "Clinical Success", val: "2.4x" }
+                { label: "Active Molecules", val: "42" },
+                { label: "Patents Pending", val: "156" },
+                { label: "Clinical Sites", val: "84" },
+                { label: "Success Rate", val: "94%" }
               ].map((stat, i) => (
-                <div key={i} className="p-8 glass-morphism rounded-3xl border-white/5 text-center">
-                  <div className="text-4xl font-black text-white mb-2">{stat.val}</div>
-                  <div className="text-[10px] text-accent-teal font-bold uppercase tracking-widest">{stat.label}</div>
+                <div key={i} className="p-10 glass-panel rounded-[2rem] text-center group hover:border-teal-500/30 transition-all">
+                  <div className="text-4xl font-black text-white mb-2 group-hover:text-teal-400 transition-colors">{stat.val}</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -73,14 +92,17 @@ export default function PipelinePage() {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-12 max-w-5xl mx-auto px-6">
-        <div className="flex gap-4 p-6 bg-carbon-900/30 rounded-2xl border border-white/5 italic">
-          <Info className="w-6 h-6 text-carbon-500 shrink-0" />
-          <p className="text-sm text-carbon-500 leading-relaxed">
-            Note: Pipeline information provided is for general information and should not be used as a basis for investment decisions. Many of our research assets are in early stages of development and are subject to substantial risks and uncertainties inherent in the pharmaceutical industry. Clinical trial results may vary and are not guaranteed to support regulatory approval.
-          </p>
+      <section className="py-16 max-w-5xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-amber-500/5 border border-amber-500/10 rounded-full text-amber-500/60 text-[10px] font-bold uppercase tracking-widest">
+          <Info className="w-3 h-3" />
+          Development Notice
         </div>
+        <p className="text-sm text-slate-500 leading-relaxed italic max-w-3xl mx-auto">
+          The pipeline data provided above reflects our current stage of drug development as of Q2 2026. Forward-looking statements involve risks and uncertainties that could cause actual results to differ materially from those projected.
+        </p>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   );
 }

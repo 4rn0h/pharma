@@ -24,7 +24,33 @@ body {
     text-wrap: balance;
   }
   
-  .glass-morphism {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  .glass-panel {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+
+  .glass-panel-hover {
+    @apply hover:bg-slate-800/60 hover:border-teal-500/30 transition-all duration-300;
+  }
+
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .bg-dots-pattern {
+    background-image: radial-gradient(#334155 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .text-glow-teal {
+    text-shadow: 0 0 15px rgba(13, 148, 136, 0.5);
+  }
+
+  .border-bioTeal {
+    border-color: #0D9488;
+  }
+
+  .bg-bioTeal {
+    background-color: #0D9488;
   }
 }
